@@ -312,32 +312,32 @@
   const STATS_KEY = 'sayTheLetter.stats';
 
   const LETTERS = [
-    { letter: 'A', word: 'Apple', emoji: '🍎' },
-    { letter: 'B', word: 'Bee', emoji: '🐝' },
-    { letter: 'C', word: 'Cat', emoji: '🐱' },
-    { letter: 'D', word: 'Dog', emoji: '🐶' },
-    { letter: 'E', word: 'Elephant', emoji: '🐘' },
-    { letter: 'F', word: 'Fish', emoji: '🐟' },
-    { letter: 'G', word: 'Grapes', emoji: '🍇' },
-    { letter: 'H', word: 'House', emoji: '🏠' },
-    { letter: 'I', word: 'Ice Cream', emoji: '🍦' },
-    { letter: 'J', word: 'Juice', emoji: '🧃' },
-    { letter: 'K', word: 'Key', emoji: '🔑' },
-    { letter: 'L', word: 'Lion', emoji: '🦁' },
-    { letter: 'M', word: 'Moon', emoji: '🌙' },
-    { letter: 'N', word: 'Nose', emoji: '👃' },
-    { letter: 'O', word: 'Orange', emoji: '🍊' },
-    { letter: 'P', word: 'Pig', emoji: '🐷' },
-    { letter: 'Q', word: 'Queen', emoji: '👑' },
-    { letter: 'R', word: 'Rainbow', emoji: '🌈' },
-    { letter: 'S', word: 'Snake', emoji: '🐍' },
-    { letter: 'T', word: 'Tree', emoji: '🌳' },
-    { letter: 'U', word: 'Umbrella', emoji: '☂️' },
-    { letter: 'V', word: 'Violin', emoji: '🎻' },
-    { letter: 'W', word: 'Watermelon', emoji: '🍉' },
-    { letter: 'X', word: 'Fox', emoji: '🦊' },
-    { letter: 'Y', word: 'Yo-yo', emoji: '🪀' },
-    { letter: 'Z', word: 'Zebra', emoji: '🦓' }
+    { letter: 'A', word: 'Apple', emoji: '🍎', spoken: 'Ay' },
+    { letter: 'B', word: 'Bee', emoji: '🐝', spoken: 'Bee' },
+    { letter: 'C', word: 'Cat', emoji: '🐱', spoken: 'See' },
+    { letter: 'D', word: 'Dog', emoji: '🐶', spoken: 'Dee' },
+    { letter: 'E', word: 'Elephant', emoji: '🐘', spoken: 'Ee' },
+    { letter: 'F', word: 'Fish', emoji: '🐟', spoken: 'Eff' },
+    { letter: 'G', word: 'Grapes', emoji: '🍇', spoken: 'Jee' },
+    { letter: 'H', word: 'House', emoji: '🏠', spoken: 'Aitch' },
+    { letter: 'I', word: 'Ice Cream', emoji: '🍦', spoken: 'Eye' },
+    { letter: 'J', word: 'Juice', emoji: '🧃', spoken: 'Jay' },
+    { letter: 'K', word: 'Key', emoji: '🔑', spoken: 'Kay' },
+    { letter: 'L', word: 'Lion', emoji: '🦁', spoken: 'El' },
+    { letter: 'M', word: 'Moon', emoji: '🌙', spoken: 'Em' },
+    { letter: 'N', word: 'Nose', emoji: '👃', spoken: 'En' },
+    { letter: 'O', word: 'Orange', emoji: '🍊', spoken: 'Oh' },
+    { letter: 'P', word: 'Pig', emoji: '🐷', spoken: 'Pee' },
+    { letter: 'Q', word: 'Queen', emoji: '👑', spoken: 'Cue' },
+    { letter: 'R', word: 'Rainbow', emoji: '🌈', spoken: 'Are' },
+    { letter: 'S', word: 'Snake', emoji: '🐍', spoken: 'Ess' },
+    { letter: 'T', word: 'Tree', emoji: '🌳', spoken: 'Tee' },
+    { letter: 'U', word: 'Umbrella', emoji: '☂️', spoken: 'You' },
+    { letter: 'V', word: 'Violin', emoji: '🎻', spoken: 'Vee' },
+    { letter: 'W', word: 'Watermelon', emoji: '🍉', spoken: 'Double You' },
+    { letter: 'X', word: 'Fox', emoji: '🦊', spoken: 'Ex' },
+    { letter: 'Y', word: 'Yo-yo', emoji: '🪀', spoken: 'Why' },
+    { letter: 'Z', word: 'Zebra', emoji: '🦓', spoken: 'Zee' }
   ];
 
   const stage = document.getElementById('stage');
@@ -418,8 +418,7 @@
   function speakHint() {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const name = currentEntry.letter;
-    const utterance = new SpeechSynthesisUtterance(name + '. ' + name + ' for ' + currentEntry.word + '.');
+    const utterance = new SpeechSynthesisUtterance(currentEntry.spoken + ' for ' + currentEntry.word + '.');
     window.speechSynthesis.speak(utterance);
   }
 
