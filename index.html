@@ -415,10 +415,11 @@
     letterEl.classList.add('pulse');
   }
 
-  function speakLetter() {
+  function speakHint() {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(currentEntry.letter);
+    const name = currentEntry.letter;
+    const utterance = new SpeechSynthesisUtterance(name + '. ' + name + ' for ' + currentEntry.word + '.');
     window.speechSynthesis.speak(utterance);
   }
 
@@ -503,8 +504,8 @@
 
   imageBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    imageHint.classList.toggle('shown');
-    speakLetter();
+    const nowShown = imageHint.classList.toggle('shown');
+    if (nowShown) speakHint();
   });
 
   finishBtn.addEventListener('click', (e) => {
